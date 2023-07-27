@@ -1,0 +1,25 @@
+{
+  "name": "wearedevs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@picocss/pico": "^1.5.10",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "c12": "^1.4.2",
+    "citty": "^0.1.2",
+    "h3": "^1.7.1",
+    "nitropack": "^2.5.2",
+    "ofetch": "^1.1.1",
+    "rollup-plugin-vue": "^6.0.0",
+    "vite": "^4.4.7",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  }
+}
