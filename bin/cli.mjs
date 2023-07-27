@@ -10,6 +10,7 @@ import {
   createNitro,
   prepare,
   prerender,
+  writeTypes,
 } from 'nitropack'
 import rollupVue from 'rollup-plugin-vue'
 import { defineLazyEventHandler, fromNodeMiddleware } from 'h3'
@@ -94,6 +95,7 @@ runMain({
         })
         const nitro = await createNitro(config)
         await prepare(nitro)
+        await writeTypes(nitro)
         await buildVite({
           build: {
             outDir: '.nitro/client',
