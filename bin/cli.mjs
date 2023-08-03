@@ -3,7 +3,15 @@
 
 import { loadConfig } from 'c12'
 import { runMain } from 'citty'
-import { build, copyPublicAssets, createDevServer, createNitro, prepare, prerenderer } from 'nitropack'
+import {
+  build,
+  copyPublicAssets,
+  createDevServer,
+  createNitro,
+  prepare,
+  prerender,
+  writeTypes,
+} from 'nitropack'
 import rollupVue from 'rollup-plugin-vue'
 import { defineLazyEventHandler, fromNodeMiddleware } from 'h3'
 import { createServer, build as buildVite } from 'vite'
@@ -87,6 +95,7 @@ runMain({
         })
         const nitro = await createNitro(config)
         await prepare(nitro)
+        await writeTypes(nitro)
         await buildVite({
           build: {
             outDir: '.nitro/client',
@@ -97,7 +106,7 @@ runMain({
         const template = await nitro.storage.getItem('build:client:index.html')
         await nitro.storage.setItem('templates:index.html', template)
         await copyPublicAssets(nitro)
-        await prerenderer(nitro)
+        await prerender(nitro)
         await build(nitro)
         await nitro.close()
       },
